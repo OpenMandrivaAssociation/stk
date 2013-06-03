@@ -1,0 +1,22 @@
+diff --git a/configure.ac b/configure.ac
+index 40c7395..b635dcd 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -65,7 +65,7 @@ if test "$debug" = "yes"; then
+ else
+   AC_SUBST( debug, [no] )
+   AC_SUBST( cppflag, [] )
+-  AC_SUBST( cxxflag, [-O3] )
++  AC_SUBST( cxxflag, [] )
+   AC_SUBST( object_path, [Release] )
+ fi
+ AC_MSG_RESULT($debug)
+@@ -81,7 +81,7 @@ CPPFLAGS="$CPPFLAGS $cppflag"
+ 
+ # For debugging and optimization ... overwrite default because it has both -g and -O2
+ echo "$CXXFLAGS"
+-CXXFLAGS="$cxxflag"
++CXXFLAGS="$CXXFLAGS $cxxflag"
+ 
+ # Check compiler and use -Wall if gnu.
+ if [test $GXX = "yes" ;] then

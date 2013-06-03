@@ -1,0 +1,29 @@
+diff --git a/src/Makefile.in b/src/Makefile.in
+index b16e4e3..e1325ee 100644
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -64,7 +64,7 @@ DEFS    += -DRAWWAVE_PATH=\"$(RAWWAVES)\"
+ %.o : ../src/include/%.cpp
+ 	$(CC) $(CFLAGS) $(DEFS) -c $(<) -o $(OBJECT_PATH)/$@
+ 
+-all : $(STATICLIB)
++all : $(SHAREDLIB) $(STATICLIB)
+ 
+ $(STATICLIB) : $(OBJECTS)
+ 	$(RM) -f $(STATICLIB)
+@@ -74,7 +74,7 @@ $(SHAREDLIB) : $(OBJECTS)
+ 	$(RM) -f $(@) $(SHAREDLIB).$(MAJOR) $(SHAREDLIB)
+ 	$(CC) $(LDFLAGS) -fPIC @libflags@ $(OBJECT_PATH)/*.o $(LIBS)
+ 	$(LN) -s @sharedname@ $(SHAREDLIB)
+-#	$(LN) -s @sharedname@ $(SHAREDLIB).$(MAJOR)
++	$(LN) -s @sharedname@ $(SHAREDLIB).$(MAJOR)
+ 
+ $(OBJECTS) : Stk.h
+ 
+@@ -86,4 +86,4 @@ clean :
+ 	$(RM) -fR *.dSYM
+ 
+ distclean: clean
+-	$(RM) Makefile
+\ No newline at end of file
++	$(RM) Makefile

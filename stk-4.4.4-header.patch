@@ -1,0 +1,179 @@
+diff --git a/projects/demo/Md2Skini.cpp b/projects/demo/Md2Skini.cpp
+index 5062685..3cc8ab6 100644
+--- a/projects/demo/Md2Skini.cpp
++++ b/projects/demo/Md2Skini.cpp
+@@ -13,7 +13,9 @@
+ #include "RtMidi.h"
+ #include "SKINI.msg"
+ #include <iostream>
+-#include <stdlib.h>
++#include <cstdlib>
++#include <cstring>
++#include <cstdio>
+ 
+ void usage(void) {
+   std::cout << "\nuseage: Md2Skini <flag(s)>\n\n";
+@@ -28,7 +30,7 @@ void usage(void) {
+   exit(0);
+ }
+ 
+-#include <signal.h>
++#include <csignal>
+ static void finish( int ignore ){ std::cout << "Type 'Exit' to quit." << std::endl; }
+ bool parseSkiniControl = true;
+ 
+diff --git a/projects/demo/demo.cpp b/projects/demo/demo.cpp
+index c354364..bd1ce01 100644
+--- a/projects/demo/demo.cpp
++++ b/projects/demo/demo.cpp
+@@ -19,7 +19,7 @@
+ // functions are defined in utilites.cpp ... specific to this program.
+ #include "utilities.h"
+ 
+-#include <signal.h>
++#include <csignal>
+ #include <iostream>
+ #include <algorithm>
+ #include <cmath>
+diff --git a/projects/demo/utilities.cpp b/projects/demo/utilities.cpp
+index 7013396..bb5fdd9 100644
+--- a/projects/demo/utilities.cpp
++++ b/projects/demo/utilities.cpp
+@@ -2,6 +2,7 @@
+ //
+ // Gary P. Scavone, 1999.
+ 
++#include <cstdlib>
+ #include <cstring>
+ #include "utilities.h"
+ 
+diff --git a/projects/effects/effects.cpp b/projects/effects/effects.cpp
+index 5477a3c..9c78256 100644
+--- a/projects/effects/effects.cpp
++++ b/projects/effects/effects.cpp
+@@ -14,7 +14,7 @@
+ #include "Messager.h"
+ #include "RtAudio.h"
+ 
+-#include <signal.h>
++#include <csignal>
+ #include <cstring>
+ #include <iostream>
+ #include <algorithm>
+diff --git a/projects/examples/controlbee.cpp b/projects/examples/controlbee.cpp
+index f2ba4b1..e287ea7 100644
+--- a/projects/examples/controlbee.cpp
++++ b/projects/examples/controlbee.cpp
+@@ -4,7 +4,7 @@
+ #include "RtAudio.h"
+ #include "Messager.h"
+ #include "SKINI.msg"
+-#include <math.h>
++#include <cmath>
+ #include <algorithm>
+ using std::min;
+ 
+diff --git a/projects/examples/play.cpp b/projects/examples/play.cpp
+index 98f3312..6af7777 100644
+--- a/projects/examples/play.cpp
++++ b/projects/examples/play.cpp
+@@ -16,7 +16,7 @@
+ #include "FileWvIn.h"
+ #include "RtAudio.h"
+ 
+-#include <signal.h>
++#include <csignal>
+ #include <iostream>
+ #include <cstdlib>
+ 
+diff --git a/projects/examples/playsmf.cpp b/projects/examples/playsmf.cpp
+index 94702ba..5ee4360 100644
+--- a/projects/examples/playsmf.cpp
++++ b/projects/examples/playsmf.cpp
+@@ -7,7 +7,7 @@
+ 
+ #include "MidiFileIn.h"
+ #include "RtMidi.h"
+-#include <signal.h>
++#include <csignal>
+ #include <cstdlib>
+ 
+ bool done = false;
+diff --git a/projects/ragamatic/ragamat.cpp b/projects/ragamatic/ragamat.cpp
+index 5f3174f..ff5bc8e 100644
+--- a/projects/ragamatic/ragamat.cpp
++++ b/projects/ragamatic/ragamat.cpp
+@@ -10,7 +10,7 @@
+ #include "Messager.h"
+ #include "RtAudio.h"
+ 
+-#include <signal.h>
++#include <csignal>
+ #include <cstring>
+ #include <iostream>
+ #include <algorithm>
+diff --git a/src/Messager.cpp b/src/Messager.cpp
+index 558f0db..d03c50d 100644
+--- a/src/Messager.cpp
++++ b/src/Messager.cpp
+@@ -308,7 +308,7 @@ bool Messager :: startSocketInput( int port )
+ 
+ #if (defined(__OS_IRIX__) || defined(__OS_LINUX__) || defined(__OS_MACOSX__))
+   #include <sys/time.h>
+-  #include <errno.h>
++  #include <cerrno>
+ #endif
+ 
+ THREAD_RETURN THREAD_TYPE socketHandler(void *ptr)
+diff --git a/src/Noise.cpp b/src/Noise.cpp
+index 8bc6c34..c809792 100644
+--- a/src/Noise.cpp
++++ b/src/Noise.cpp
+@@ -11,7 +11,7 @@
+ /***************************************************/
+ 
+ #include "Noise.h"
+-#include <time.h>
++#include <ctime>
+ 
+ namespace stk {
+ 
+diff --git a/src/RtAudio.cpp b/src/RtAudio.cpp
+index 823faaf..44e15a5 100644
+--- a/src/RtAudio.cpp
++++ b/src/RtAudio.cpp
+@@ -45,6 +45,7 @@
+ #include <cstdlib>
+ #include <cstring>
+ #include <climits>
++#include <cstdio>
+ 
+ // Static variable definitions.
+ const unsigned int RtApi::MAX_SAMPLE_RATES = 14;
+@@ -6745,11 +6746,10 @@ bool RtApiPulse::probeDeviceOpen( unsigned int device, StreamMode mode,
+ 
+ #include <unistd.h>
+ #include <sys/ioctl.h>
+-#include <unistd.h>
+ #include <fcntl.h>
+ #include "soundcard.h"
+-#include <errno.h>
+-#include <math.h>
++#include <cerrno>
++#include <cmath>
+ 
+ extern "C" void *ossCallbackHandler(void * ptr);
+ 
+diff --git a/src/Stk.cpp b/src/Stk.cpp
+index ab90da9..9e6d93b 100644
+--- a/src/Stk.cpp
++++ b/src/Stk.cpp
+@@ -51,7 +51,7 @@
+ /***************************************************/
+ 
+ #include "Stk.h"
+-#include <stdlib.h>
++#include <cstdlib>
+ 
+ namespace stk {
+ 

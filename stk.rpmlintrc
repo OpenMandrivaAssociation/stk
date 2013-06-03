@@ -1,0 +1,5 @@
+# There is no manual page
+addFilter("W: no-manual-page-for-binary")
+
+# This is OK for a .wav sound file
+addFilter("E: outside-libdir-files")
