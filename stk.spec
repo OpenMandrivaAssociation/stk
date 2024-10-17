@@ -8,7 +8,7 @@ Release:	1
 Summary:	Synthesis ToolKit in C++
 Group:		Sound
 License:	MIT
-URL:		http://ccrma.stanford.edu/software/stk/
+URL:		https://ccrma.stanford.edu/software/stk/
 # Original tarfile can be found at %%{url}/release/%%{name}-%%{version}.tar.gz
 # We remove legally questionable files as well as accidentally packed
 # object files.
