@@ -20,6 +20,10 @@ Patch1:		%{name}-%{version}-cflags-lib.patch
 Patch2:		%{name}-%{version}-sharedlib.patch
 Patch3:		%{name}-%{version}-projects.patch
 Patch4:		%{name}-%{version}-pthread.patch
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:	pkgconfig(jack)
 BuildRequires:	symlinks
